@@ -1,5 +1,6 @@
 <div class="w-full max-w-xs m-auto mt-5">
-  <h1 class="font-hairline mb-6 text-center">Edit <%= resource_name.to_s.humanize %></h1>
+  <h1 class="mb-6 font-hairline text-center">Edit <%= resource_name.to_s.humanize %></h1>
+  <h1 class="mb-6 font-hairline text-center">Total Credits: <%= current_user.credits %></h1>
 
   <%= form_for(resource,
                  as: resource_name,

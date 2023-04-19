@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  get 'game/index'
+  get 'session/new' => 'game#new'
+  get 'api/roll' => 'game#roll'
+  get 'game/cash-out' => 'game#cash_out'
   root to: 'game#index'
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
