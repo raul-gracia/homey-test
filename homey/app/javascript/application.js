@@ -10,6 +10,7 @@ const creditsElement = document.getElementById('credits')
 const winningMessage = document.getElementById('winning-message')
 const winningMessageText = document.getElementById('winning-message-text')
 let credits = parseInt(creditsElement.textContent, 10)
+hideWinningMessage()
 
 function updateCredits(newCredits) {
   credits = newCredits
@@ -17,11 +18,11 @@ function updateCredits(newCredits) {
 }
 
 function showWinningMessage(winningMessage) {
-  winningMessage.style.display === 'block'
+  winningMessage.style.display = 'block'
   winningMessageText.textContent = `You won ${result.credits_won} credits!`
 }
 function hideWinningMessage() {
-  winningMessage.style.display === 'none'
+  winningMessage.style.display = 'none'
 }
 
 function updateSlot(slotElement, symbol, delay) {
@@ -68,4 +69,25 @@ rollButton.addEventListener('click', async () => {
     alert('An error occurred while fetching roll results')
   }
 })
-hideWinningMessage()
+
+const cashOutButton = document.getElementById('cashOutButton')
+
+cashOutButton.addEventListener('mouseenter', () => {
+  const chance = Math.random()
+
+  if (chance < 0.5) {
+    const xOffset = Math.random() * 600 - 300
+    const yOffset = Math.random() * 600 - 300
+
+    cashOutButton.style.transform = `translate(${xOffset}px, ${yOffset}px)`
+  } else if (chance < 0.9) {
+    cashOutButton.style.pointerEvents = 'none'
+    setTimeout(() => {
+      cashOutButton.style.pointerEvents = 'auto'
+    }, 1000)
+  }
+})
+
+cashOutButton.addEventListener('click', async () => {
+  window.location.href = '/game/cash-out'
+})
